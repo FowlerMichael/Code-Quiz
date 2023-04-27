@@ -33,7 +33,8 @@ var question= [
   },
  ];
 
-start.addEventListener("click", function () {
+start.addEventListener("click", function (event) {
+    event.preventDefault();
     console.log("start");
     document.getElementById("start-btn").style.display = "none";
     startQuiz();
@@ -113,13 +114,15 @@ function displayAnswers(currentQuestion) {
         } 
       });
 
-      saveScore.addEventListener("click", function(event){
-          event.preventDefault();
-          var initials = document.getElementById("initials");
-          var score = document.getElementById("score");
-          localStorage.setItem("initials", initials);
-          localStorage.setItem("score", score);
-        });
+saveScore.addEventListener("click", function(event){
+   event.preventDefault();
+   var initials = document.getElementById("initials");
+    var score = document.getElementById("score");
+    localStorage.setItem("initials", initials);
+    localStorage.setItem("score", score);
+    renderHighScore();
+});
+
 
      displayAnswers(currentQuestion);
     } 
