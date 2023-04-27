@@ -2,35 +2,32 @@ var timerEl = document.getElementById("timer");
 var scoreEl = document.getElementById("score");
 const start = document.getElementById("start-btn");
 var currentQuestionIndex = 0;
-let secondsLeft = 20;
+let secondsLeft = 40;
 let score = 0;
 var questionText = document.getElementById("question");
 var answer = document.getElementById("answers");
-
-//var highScore = document.getElementById("highScore");
-
-//const saveHs = localStorage.setItem("highScore");
-
+var displayText = document.getElementById("displayText");
+var saveScore = document.getElementById("saveScore");
 
 var question= [
     {
-    question: ("what Dose HTML stand for?"),
+    question: ("what does HTML stand for?"),
     answers: [ "Hyper Text Markdown Language","Hyper Text Markup Language","Hyper Text Machine Language","Hyper Text Markup Leveler"],
     correctAnswer: "1"
   },
-  { question: "what Dose CSS Stand for?",
+  { question: "what does CSS Stand for?",
     answers: [ "cascading style sheet", "cascading style syntax", "cascading syntax sheet", "code style sheet"],
     correctAnswer: "0"
   },
-  { question: "what Dose JS Stand for?",
+  { question: "what does JS Stand for?",
     answers: [ "java script", "java style", "java sheet", "java syntax"],
     correctAnswer: "0"
   },
-  { question: "what Dose DOM Stand for?",
+  { question: "what does DOM Stand for?",
     answers: [ "document object message", "document option model", "document object model", "document of main"],
     correctAnswer: "2"
   },
-  { question: "what Dose API Stand for?",
+  { question: "what does API Stand for?",
     answers: [ "application program interstyle", "application program intersheet", "application page interface", "application program interface"],
     correctAnswer: "3"
   },
@@ -43,7 +40,7 @@ start.addEventListener("click", function () {
     askQuestion();
     
 });
-    
+
 function startQuiz() {
   
   currentQuestionIndex = 0;
@@ -54,14 +51,16 @@ function startQuiz() {
       secondsLeft--;
       timerEl.textContent = secondsLeft;
 
-      if (secondsLeft === 0 || currentQuestionIndex === question.length) {
+      if (secondsLeft <= 0 || currentQuestionIndex === question.length || score === 5) {
           clearInterval(timerInterval);
           console.log("game over!");
-        resetGame();  
+       
+           resetGame();  
       }
 
   }, 1000);
 }
+
 function resetGame() {
  var gameOver = confirm("Game Over! Your score is " + score + " Would you like to play again?");
       if (gameOver === true) {
@@ -74,7 +73,7 @@ function resetGame() {
           alert("Thanks for playing!");
          }
  }
- 
+
 function displayAnswers(currentQuestion) {
     for (let i = 0; i < currentQuestion.answers[i]; i++) {
       let answerBtn = document.createElement("button");
@@ -102,8 +101,10 @@ function displayAnswers(currentQuestion) {
         if (answerBtn.value === currentQuestion.correctAnswer) {
           score++;
           scoreEl.textContent = "Score: " + score;
+          displayText.textContent = "Correct!";
         } else {
             secondsLeft -= 5;
+            displayText.textContent = "Wrong!";
             
         }
         currentQuestionIndex++;
@@ -111,7 +112,15 @@ function displayAnswers(currentQuestion) {
           askQuestion();
         } 
       });
-    
-    displayAnswers(currentQuestion);
-    }
-  }
+
+      saveScore.addEventListener("click", function(event){
+          event.preventDefault();
+          var initials = document.getElementById("initials");
+          var score = document.getElementById("score");
+          localStorage.setItem("initials", initials);
+          localStorage.setItem("score", score);
+        });
+
+     displayAnswers(currentQuestion);
+    } 
+}

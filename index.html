@@ -13,20 +13,25 @@
         a total of five questions for every wrong question you will
       get five seconds removed from your current time</p></div>
       
-      <div id="timer" class=side>30s
-        <button id="start-btn"> Start Quiz </button></div>
-      
+      <div id="timer" class=side>30s<button id="start-btn"> Start Quiz </button></div>
     
-      <div id="score" class="scoreInput">Score:</div>
-
-      
+      <div id="displayText"></div>
+     
       <section id="multipulChoice">
          <div class="btn-answers" id="answers"></div>
       </section>
 
+      <label id="initials">Save High Score<label>
+        <input type="text" id="initialsInput" name="initials" placeholder="Enter Initials" maxlength="3">
+        <br>
+        <label id="score">score:<label>
+        <br>
+        <input type="button" id="saveScore" value= "Save highScore">
+        <br>
+       
     </main>
     <footer>
-        <div class="highscores" id="highscores"><a href= Code-Quiz/highScores.html >High Scores</a></div>
+        <div class="highscores" id="highscores"><a href= highScores.html >High Scores</a></div>
     </footer>
     <script src="script.js"></script>
   </body>
