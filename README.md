@@ -16,7 +16,7 @@ code quiz is a in window quiz about coding
 To use the Code Quiz application, open the `index.html` file in a web browser. Click the "Start Quiz" button to begin the quiz. Answer all five questions within the time limit to receive a high score. Input your initials and click the "Save High Score" button to save your score. Click the "High Scores" link in the footer to view the high scores page.
 
 ## Link
-
+https://fowlermichael.github.io/Code-Quiz/
 
 ## Languages Used
 HTML,CSS,JavaScript
