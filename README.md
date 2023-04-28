@@ -1,7 +1,8 @@
 # Code-Quiz
 code quiz is a in window quiz about coding 
 # Photo
-image.png
+![image](https://user-images.githubusercontent.com/123891461/235034968-8bca6a5c-f6b6-48e5-9c29-f7f9a14ea170.png)
+
 
 ## Key Features
 
